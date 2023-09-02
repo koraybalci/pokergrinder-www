@@ -1,11 +1,11 @@
 {
-  "name": "Mobile App Name",
-  "short_name": "Mobile App Name",
+  "name": "Poker Grinder",
+  "short_name": "Poker Grinder",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "/",
-  "description": "A super tagline for the mobile app",
+  "description": "Track your games and bankroll",
   "scope": "/",
-  "theme_color": "#efeeff",
-  "background_color": "#efeeff"
+  "theme_color": "#5c832f",
+  "background_color": "#5c832f"
 }
