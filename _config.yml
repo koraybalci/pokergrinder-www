@@ -6,7 +6,7 @@
 title: Poker Grinder
 email: contact@pokergrinder.app
 description: Track your games and bankroll
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/pokergrinder-www" # the subpath of your site, e.g. /blog
 url: "https://www.pokergrinder.app" # the base hostname & protocol for your site, e.g. http://example.com
 theme_color: '#5c832f'
 twitter_username: pokergrinder
