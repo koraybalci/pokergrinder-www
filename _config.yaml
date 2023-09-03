@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Poker Grinder
-email: contact@pokergrinder.app
+#email: contact@pokergrinder.app
 # phone: 0123456789
 description: Poker Grinder app coming soon..
 baseurl: "" # the subpath of your site, e.g. /blog
