@@ -1,11 +1,7 @@
+*.gem
+.git
+.bundle
+.DS_Store
 _site
-.sass-cache
-.jekyll-metadata
-node_modules
-assets
-yarn-error.log
-.yarnclean
-
-# editors
-.idea
+Gemfile.lock
 .jekyll-cache

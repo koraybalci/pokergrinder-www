@@ -1,6 +1,16 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
+layout: default
 ---
+
+# Poker Grinder App Home
+
+Under Construction
+
+## Features
+
+Poker Grinder app lets you track your tournament games and preflop action as well as your luck! Android version is going to be ready soon. 
+
+***
+
+
+Built by [Soon](https://pokergrinder.app/soon). 
