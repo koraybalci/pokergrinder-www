@@ -1,0 +1,32 @@
+---
+layout: page
+title: All Authors 
+permalink: /all-authors
+---
+  
+<div class="blog-area bg-color1 p-t-130 p-b-130">
+   <div class="container">
+      <div class="blog-wrapper">
+         <div class="row">
+         {% for author in site.authors %}
+		  {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
+ 
+ 
+               <div class="col-sm-6  col-md-4">
+               <article class="author-post"  data-aos="fade-up">
+                  <div class="author-img"><a href="{{ author.url  | relative_url}}"><img src="{{ author.image | relative_url}}" alt="{{ author.name }}"/></a></div>
+                  <div class="author-content">
+                   
+                     <h6 class="heading-6 mb-3"><a href="{{ author.url  | relative_url}}">{{ author.name }}</a></h6>
+                    
+                     
+                     <p>{{ author.bio }}</p>
+                  </div>
+               </article>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</div>
+ 

@@ -1,68 +1,79 @@
-### Welcome to Jekyll Webpack Boilerplate
+####################################################
 #
-# This config file contains the config of your webpages
-# You may also want to update /config/webpack.pwa.js in case you want to generate a Progressive Web App
+# Welcome to Applin Jekyll Template
+#
+####################################################
 
-title: Poker Grinder
-email: contact@pokergrinder.app
-description: Track your games and bankroll
-baseurl: "/pokergrinder-www" # the subpath of your site, e.g. /blog
-url: "https://www.pokergrinder.app" # the base hostname & protocol for your site, e.g. http://example.com
-theme_color: '#5c832f'
-twitter_username: pokergrinder
-# github_username:  sandoche
-author: Koray Balci
-logo: assets/images/large-logo.png
-# twitter:
-  # username: sandochee
-# social:
-#   name: Poker Grinder
-#   links:
-#     - https://twitter.com/pokergrinder
-    # - https://www.facebook.com/sandoche
-    # - https://www.linkedin.com/in/sandoche
-    # - https://github.com/sandoche
+# Site settings
 
-languages: ["en"]
-ampdir: amp
+title: "Applin Premium Responsive Jekyll Theme"
+email: "themeix@gmail.com"
+description: >- # this means to ignore newlines until "baseurl:"
+  Appline Jekyll Theme For Mobile Apps Download Landing Page.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+logo: "/assets/images/logo.svg"
+mailchimp-list: //redgadgets.us10.list-manage.com/subscribe/post?u=210acce5db69d3d4a04b0e25d&amp;id=08c6708f40"
 
-# github: https://github.com/sandoche/Mobile-app-landingpage-template
+cover_image: ""
 
-### Google webmaster tools, Google Analytics, Doorbell and Cookie consent uncomment and put the API key
-#webmaster_verifications:
-#  google: verification_code
-#google_analytics: UA-XXXXXXXXX-X
-#doorbell:
-#  id: doorbell_id
-#  appKey: doorbell_appKey
+permalink: "/:title"
 
-#cookie_consent: true
 
-### Build settings
+# Build settings
 markdown: kramdown
+
 plugins:
   - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - octopress-minify-html
-  - amp-jekyll
+  - jekyll-archives
+  - jekyll-paginate-v2
+ 
+collections:
+  authors:
+    output: true
+    permalink: /author/:path/  
 
-### Exclude from processing.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - _src
-  - _images
-  - LICENSE
-  - package.json
-  - README.md
-  - webpack.config.js
-  - yarn-error.log
-  - yarn.lock
-  - config
-  - optimization-fix
-  - optimization-fix-this-file-is-ignored.js
-  - icon.png
-  - docs
+
+# Site configuration for the Jekyll 2 Pagination Gem
+pagination:
+  enabled: true
+  debug: true
+  collection: "posts"
+  per_page: 6
+  permalink: "/pages/:num/" # Pages are simple html files
+  title: ":title - page :num"
+  limit: 0
+  sort_field: "date"
+  sort_reverse: true
+  category: "posts"
+  tag: ""
+  locale: ""
+  trail:
+    before: 2
+    after:
+  extension: "html"
+  indexpage: "index"
+
+autopages:
+  enabled: true
+  categories:
+    layouts:
+      - "category.html"
+    title: 'Category -  :cat'
+    permalink: "/category/:cat"
+  collections:
+    layouts:
+      - "category.html"
+    title: " :coll" # :coll is replaced by the collection name
+    permalink: "/:coll/"
+
+ 
+ 
+
+
+feed:
+  collections:
+    posts:
+      path: "/index.xml"
