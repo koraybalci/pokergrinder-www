@@ -322,11 +322,11 @@ input[type='submit'] {
 	}
   }
   .header-banner{
-     padding:180px 50px 0px 0px;
+     padding:50px 50px 0px 0px;
 	 z-index: 3;
      position: relative;
 	 @include desktop{
-	    padding:100px 0px 0px 0px;
+	    padding:50px 0px 0px 0px;
 	 } 
 	 @include laptop{
 	    padding:40px 0px 100px 0px;
@@ -474,7 +474,7 @@ input[type='submit'] {
 	}
 }
 .header-nav{
-   padding-top:$inner-70;
+   padding-top:$inner-30;
    
    @include laptop{
       padding-top:$inner-30;

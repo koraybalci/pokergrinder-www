@@ -6,16 +6,16 @@
 
 # Site settings
 
-title: "Applin Premium Responsive Jekyll Theme"
-email: "themeix@gmail.com"
+title: "Poker Grinder"
+email: "mentat@gmail.com"
 description: >- # this means to ignore newlines until "baseurl:"
-  Appline Jekyll Theme For Mobile Apps Download Landing Page.
+  Poker Grinder: Bankroll and preflop action tracker for live sessions
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
-logo: "/assets/images/logo.svg"
-mailchimp-list: //redgadgets.us10.list-manage.com/subscribe/post?u=210acce5db69d3d4a04b0e25d&amp;id=08c6708f40"
+url: "https://pokergrinder.app" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: PGrinderapp
+github_username:  koraybalci
+logo: "/assets/images/header-logo.png"
+# mailchimp-list: //redgadgets.us10.list-manage.com/subscribe/post?u=210acce5db69d3d4a04b0e25d&amp;id=08c6708f40"
 
 cover_image: ""
 
@@ -34,7 +34,6 @@ collections:
   authors:
     output: true
     permalink: /author/:path/  
-
 
 # Site configuration for the Jekyll 2 Pagination Gem
 pagination:
@@ -68,10 +67,6 @@ autopages:
       - "category.html"
     title: " :coll" # :coll is replaced by the collection name
     permalink: "/:coll/"
-
- 
- 
-
 
 feed:
   collections:
