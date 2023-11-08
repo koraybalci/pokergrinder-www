@@ -1,18 +1,18 @@
-- title: Responsive Design
-  description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
-  image: assets/images/service-icon5.png
-- title: Bootstrap 4.x
-  description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
-  image: assets/images/service-icon2.png
-- title: Browser Support
-  description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
-  image: assets/images/service-icon.png
-- title: 500+ Icon Fonts
-  description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
-  image: assets/images/service-icon4.png
-- title: Creative Design
-  description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
+- title: Preflop Actions
+  description: You can track your live VPiP, PFR and 3-Bet statistics during your session and adjust accordingly to target desired metrics.
   image: assets/images/service-icon6.png
-- title: More Features
-  description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
+- title: Quick Input
+  description: We made it extremely easy to record your actions so that you only spend a couple of seconds to record your actions in the live game setting.
+  image: assets/images/service-icon5.png
+- title: Bankroll Tracking
+  description: Basic session info accompanied with your spend/profit and rank so that you can keep an eye on your bankroll.
   image: assets/images/service-icon3.png
+# - title: 500+ Icon Fonts
+#   description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
+#   image: assets/images/service-icon4.png
+# - title: Creative Design
+#   description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
+#   image: assets/images/service-icon2.png
+# - title: More Features
+#   description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
+#   image: assets/images/service-icon.png
