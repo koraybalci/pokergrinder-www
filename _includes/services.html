@@ -1,4 +1,4 @@
-<section class="service-area bg-color1 p-t-130 p-b-100">
+<section class="service-area bg-color1 p-b-100" style="padding-top: 50px;">
 <div class="themeix-ani">
     <img src="{{site.baseurl}}/assets/images/themeix-ani1.png" alt="animated shape" class="shape-one" />
     <img src="{{site.baseurl}}/assets/images/themeix-ani2.png" alt="animated shape" class="shape-two" />
@@ -17,6 +17,11 @@
                     {% assign odd = forloop.index | modulo: 2 %}
                     {% assign even = forloop.index | modulo: 3 %}
                     <div class="service-line {% if forloop.first %} line-color1 {% endif %} {% if odd == 0 %} line-color2 {% endif %} {% if even == 0 %} line-color3 {% endif %}"></div>
+                    {% if service.screenshot %}
+                    <div class="phone-frame{% if service.landscape %} phone-frame-landscape{% endif %}">
+                        <img src="{{site.baseurl}}/{{service.screenshot}}" alt="{{service.title}} screenshot" class="service-screenshot" />
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             </div>

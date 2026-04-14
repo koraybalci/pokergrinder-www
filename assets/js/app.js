@@ -163,6 +163,22 @@
 
     });
 
+ /* screenshot lightbox */
+    $('body').append('<div id="screenshot-overlay"><div class="phone-frame"><img id="screenshot-overlay-img" src="" alt="" class="service-screenshot" /></div></div>');
+    $(document).on('click', '.service-screenshot', function() {
+        var isLandscape = $(this).closest('.phone-frame-landscape').length > 0;
+        $('#screenshot-overlay .phone-frame')
+            .toggleClass('phone-frame-landscape', isLandscape);
+        $('#screenshot-overlay-img').attr('src', $(this).attr('src'));
+        $('#screenshot-overlay').fadeIn(200);
+    });
+    $(document).on('click', '#screenshot-overlay', function() {
+        $('#screenshot-overlay').fadeOut(200);
+    });
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape') $('#screenshot-overlay').fadeOut(200);
+    });
+
  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       var target = $(this.hash);

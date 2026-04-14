@@ -1,18 +1,25 @@
-- title: Preflop Actions
-  description: You can track your live VPiP, PFR and 3-Bet statistics during your session and adjust accordingly to target desired metrics.
-  image: assets/images/service-icon6.png
-- title: Quick Input
-  description: We made it extremely easy to record your actions so that you only spend a couple of seconds to record your actions in the live game setting.
-  image: assets/images/service-icon5.png
-- title: Bankroll Tracking
-  description: Basic session info accompanied with your spend/profit and rank so that you can keep an eye on your bankroll.
+- title: Session Tracking
+  description: Log game type, buy-in, rebuys, expenses, venue, start and end times, blind interval and ITM status for every session.
+  image: assets/images/service-icon2.png
+  screenshot: assets/images/screen-sessions.png
+- title: Bankroll Chart
+  description: Visualize your bankroll progression over time. Unlocks after 10 completed sessions so the data tells a real story.
   image: assets/images/service-icon3.png
-# - title: 500+ Icon Fonts
-#   description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
-#   image: assets/images/service-icon4.png
-# - title: Creative Design
-#   description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
-#   image: assets/images/service-icon2.png
-# - title: More Features
-#   description: Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt ut labore et dolore magna.
-#   image: assets/images/service-icon.png
+  screenshot: assets/images/screen-bankroll-chart.png
+  landscape: true
+- title: Hand History
+  description: Record full hands with hero cards, position, stack size, preflop and postflop actions, community cards and result.
+  image: assets/images/service-icon5.png
+  screenshot: assets/images/screen-hand-recorder.png
+- title: Player Notes
+  description: Attach notes to opponents and look them up before or during a session so you always have an edge at the table.
+  image: assets/images/service-icon4.png
+  screenshot: assets/images/screen-player-notes.png
+- title: Preflop Tracker
+  description: Track your live VPiP, PFR and 3-Bet statistics during your session and adjust accordingly to target desired metrics.
+  image: assets/images/service-icon6.png
+  screenshot: assets/images/screen-preflop.png
+- title: Lucky Counter
+  description: Track all-ins, flips, suckouts, bad beats and rivers to get a Luck Score and see how variance is really treating you.
+  image: assets/images/service-icon.png
+  screenshot: assets/images/screen-lucky-counter.png
