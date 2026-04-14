@@ -5,3 +5,4 @@ node_modules
 .jekyll-cache
 _site
 Gemfile.lock
+.claude/settings.local.json
