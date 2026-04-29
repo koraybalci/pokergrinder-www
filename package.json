@@ -24,15 +24,15 @@
 		"url": "https://github.com/themeix/gulp-quickstart-pack/issues"
 	},
 	"dependencies": {
-		"jquery": "^3.6.0",
-		"bootstrap": "^4.6.0",
 		"@popperjs/core": "^2.9.3",
 		"aos": "^2.3.4",
+		"bootstrap": "^4.6.0",
+		"jimp": "^1.6.1",
+		"jquery": "^3.6.0",
 		"owl.carousel": "^2.3.4"
 	},
 	"devDependencies": {
 		"ansi-colors": "^4.1.1",
-		"sass": "^1.37.5",
 		"concat": "^1.0.3",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
@@ -55,7 +55,8 @@
 		"gulp-zip": "^5.0.2",
 		"jshint": "^2.13.1",
 		"jshint-stylish": "^2.2.1",
-		"run-sequence": "^2.2.1"
+		"run-sequence": "^2.2.1",
+		"sass": "^1.37.5"
 	},
 	"license": "MIT"
 }
