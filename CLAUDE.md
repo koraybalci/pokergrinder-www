@@ -10,9 +10,16 @@ This is the marketing/landing page website for the **Poker Grinder** mobile app 
 
 ### Jekyll (site content/structure)
 ```bash
-bundle exec jekyll serve       # Local dev server with live reload
-bundle exec jekyll build       # Build static site to _site/
+bundle exec jekyll serve --livereload   # Local dev server → http://localhost:4000/
+bundle exec jekyll build                # Build static site to _site/
 ```
+
+On **Windows**, start the server in the background via PowerShell (use `/serve` command):
+```powershell
+Start-Process -NoNewWindow -FilePath "bundle" -ArgumentList "exec jekyll serve --livereload"
+```
+
+To stop it: `Get-Process ruby | Stop-Process`
 
 ### Gulp (CSS/JS asset pipeline)
 ```bash
@@ -48,6 +55,11 @@ The `<!-- gulp:css -->` / `<!-- endgulp -->` comments in `_layouts/default.html`
 
 ### Unused Files
 Several HTML files at the root are suffixed `-unused` (about, authors, blog, contact) — they exist as templates but are not part of the active site navigation.
+
+### Store Badges
+- **Google Play**: use `assets/images/Google-Play-Button.png` (official black badge — "GetItOnGooglePlay_Badge_Web_color_English.png" from Google's Partner Marketing Hub) as a plain `<img>` inside an `<a>`. Do not wrap it in Bootstrap button classes or custom styles — Google's guidelines prohibit modifying badge appearance. Required alt text: `"Get it on Google Play"`. Display height: 60px. Source: https://partnermarketinghub.withgoogle.com/brands/google-play/visual-identity/badge-guidelines/
+- **App Store**: `assets/images/App-Store.png` is the equivalent asset for Apple.
+- `assets/images/google-play.png` is just the Play icon (20×20) used in the old custom button — do not use it for store badge links.
 
 ### Plugins
 - `jekyll-paginate-v2` + `jekyll-archives` — configured in `_config.yml` for potential blog use
