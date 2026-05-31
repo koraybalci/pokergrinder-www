@@ -3,6 +3,6 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.pokergrinder.poker_grinder",
-    "sha256_cert_fingerprints": ["REPLACE_WITH_RELEASE_KEYSTORE_SHA256"]
+    "sha256_cert_fingerprints": ["E4:25:43:C0:2A:9D:DF:6F:BB:DA:C7:84:17:BC:93:93:40:DB:36:3F:9A:AE:B1:95:8E:E5:34:D7:CB:A3:97:13"]
   }
 }]
