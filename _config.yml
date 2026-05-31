@@ -25,6 +25,11 @@ permalink: "/:title"
 # Build settings
 markdown: kramdown
 
+# Include dot-prefixed directories Jekyll would otherwise skip.
+# Required for /.well-known/ (App Links + Universal Links association files).
+include:
+  - .well-known
+
 plugins:
   - jekyll-feed
   - jekyll-archives

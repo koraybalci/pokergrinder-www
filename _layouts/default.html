@@ -2,6 +2,27 @@
 <html lang="en">
 
 <head>
+    <!-- Mobile store redirect: Android → Play Store, iOS → App Store.
+         Fires before page renders so mobile share-link recipients go
+         straight to the store. Desktop visitors see the landing page. -->
+    <script>
+      (function () {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(ua)) {
+          var sp = new URLSearchParams(window.location.search);
+          var utmParts = [];
+          ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+            var v = sp.get(k);
+            if (v) utmParts.push(k + '=' + v);
+          });
+          var base = 'https://play.google.com/store/apps/details?id=com.pokergrinder.poker_grinder';
+          if (utmParts.length) base += '&referrer=' + encodeURIComponent(utmParts.join('&'));
+          window.location.replace(base);
+        } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+          window.location.replace('https://apps.apple.com/app/id6773290275');
+        }
+      })();
+    </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVJ1Z292LE"></script>
     <script>
