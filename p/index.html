@@ -80,6 +80,14 @@ sitemap: false
       return String(id).replace(/-[a-z]{2}$/i, '').toUpperCase();
     }
 
+    // "Member since June 2026" from an ISO timestamp; '' if missing/invalid.
+    function memberSince(iso) {
+      if (!iso) return '';
+      var d = new Date(iso);
+      if (isNaN(d.getTime())) return '';
+      return d.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+    }
+
     function showState(msg) {
       el.innerHTML = '<div class="state-msg">' + msg + '</div>';
     }
@@ -97,6 +105,10 @@ sitemap: false
       html += '  <h1 class="name">' + escapeHtml(name) + '</h1>';
       if (flag || countryName) {
         html += '  <p class="country">' + flag + (countryName ? '&nbsp;&nbsp;' + escapeHtml(countryName) : '') + '</p>';
+      }
+      var since = memberSince(p.created_at);
+      if (since) {
+        html += '  <p class="member-since">Member since ' + escapeHtml(since) + '</p>';
       }
       html += '  <div class="divider"></div>';
       html += '  <div class="stat"><div class="num">' + sessions + '</div><div class="label">Sessions recorded</div></div>';
