@@ -3,7 +3,7 @@
     "apps": [],
     "details": [{
       "appID": "9WVA37WPMA.com.pokergrinder.pokergrinder",
-      "paths": ["*"]
+      "paths": ["/p/*"]
     }]
   }
 }
