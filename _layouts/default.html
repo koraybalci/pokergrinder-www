@@ -7,6 +7,17 @@
          straight to the store. Desktop visitors see the landing page. -->
     <script>
       (function () {
+        // Profile deep-link router: /p/<handle> is served via GitHub's 404
+        // fallback (no static file exists there). Redirect to the canonical
+        // renderer at /p/?u=<handle>, then skip the store redirect below.
+        var path = window.location.pathname;
+        if (path.indexOf('/p/') === 0 && path.length > 3) {
+          var h = decodeURIComponent(path.slice(3).replace(/\/+$/, ''));
+          if (h && h !== 'index.html') {
+            window.location.replace('/p/?u=' + encodeURIComponent(h));
+            return;
+          }
+        }
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         if (/android/i.test(ua)) {
           var sp = new URLSearchParams(window.location.search);

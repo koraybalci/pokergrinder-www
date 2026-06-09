@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Generic preview: per-profile previews require server-side prerender
+       (GitHub Pages is static; the profile is fetched client-side). -->
+  <title>Poker Grinder Profile</title>
+  <meta name="description" content="A live poker player's profile on Poker Grinder — sessions, leagues and more.">
+  <meta property="og:site_name" content="Poker Grinder">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Poker Grinder Profile">
+  <meta property="og:description" content="See this player's live poker profile on Poker Grinder.">
+  <meta property="og:image" content="{{ site.url }}/assets/images/header-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Poker Grinder Profile">
+  <meta name="twitter:description" content="See this player's live poker profile on Poker Grinder.">
+
+  <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/x-icon" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SVJ1Z292LE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SVJ1Z292LE');
+  </script>
+
+  <style>
+    :root {
+      --purple-deep: #290849;
+      --purple: #5F2167;
+      --gold: #E0A100;
+      --ink: #2b2440;
+      --muted: #6b6480;
+      --line: #ece8f1;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(160deg, var(--purple-deep) 0%, var(--purple) 100%);
+      min-height: 100vh;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+    }
+    .brand {
+      display: inline-flex; align-items: baseline; gap: 7px;
+      margin-bottom: 22px; text-decoration: none;
+    }
+    .brand .b1 { color: #fff; font-weight: 800; font-size: 19px; letter-spacing: .3px; }
+    .brand .b2 { color: var(--gold); font-weight: 800; font-size: 19px; letter-spacing: .3px; }
+    .card {
+      width: 100%; max-width: 420px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      overflow: hidden;
+    }
+    .card-inner { padding: 32px 26px 26px; }
+    .state-msg {
+      text-align: center; color: var(--muted);
+      padding: 48px 26px; font-size: 15px;
+    }
+    .spinner {
+      width: 34px; height: 34px; margin: 0 auto 16px;
+      border: 3px solid var(--line); border-top-color: var(--purple);
+      border-radius: 50%; animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .avatar {
+      width: 96px; height: 96px; border-radius: 50%;
+      margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 36px; font-weight: 700; letter-spacing: .5px;
+    }
+    .name { text-align: center; font-size: 22px; font-weight: 700; color: var(--purple); margin: 0 0 4px; }
+    .country { text-align: center; color: var(--muted); font-size: 14px; margin: 0; }
+    .divider { height: 1px; background: var(--line); margin: 22px 0; }
+
+    .stat { text-align: center; }
+    .stat .num { font-size: 30px; font-weight: 800; color: var(--purple); line-height: 1; }
+    .stat .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-top: 6px; }
+
+    .section-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .9px; margin: 22px 0 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      background: rgba(95,33,103,.08); color: var(--purple);
+      border: 1px solid rgba(95,33,103,.18);
+      border-radius: 999px; padding: 6px 13px; font-size: 13px; font-weight: 600;
+    }
+    .hendon {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--purple); text-decoration: none; font-size: 14px; font-weight: 600;
+    }
+    .hendon:hover { text-decoration: underline; }
+
+    .cta { background: #faf8fc; border-top: 1px solid var(--line); padding: 22px 26px 26px; text-align: center; }
+    .cta-title { font-size: 14px; font-weight: 700; color: var(--ink); margin: 0 0 4px; }
+    .cta-sub { font-size: 12.5px; color: var(--muted); margin: 0 0 16px; }
+    .stores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .stores a { display: inline-block; }
+    .stores img { height: 50px; width: auto; }
+
+    .page-footer { margin-top: 26px; }
+    .page-footer a { color: rgba(255,255,255,.7); text-decoration: none; font-size: 12.5px; }
+    .page-footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <a class="brand" href="{{ site.url }}">
+    <span class="b1">Poker</span><span class="b2">Grinder</span>
+  </a>
+
+  {{ content }}
+
+  <div class="page-footer">
+    <a href="{{ site.url }}">pokergrinder.app</a>
+  </div>
+</body>
+</html>

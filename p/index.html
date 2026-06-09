@@ -1,0 +1,154 @@
+---
+layout: profile
+permalink: /p/
+sitemap: false
+---
+
+<div class="card">
+  <div id="content">
+    <div class="state-msg">
+      <div class="spinner"></div>
+      Loading profile…
+    </div>
+  </div>
+
+  <div class="cta">
+    <p class="cta-title">Track your own live poker game</p>
+    <p class="cta-sub">Bankroll, sessions and preflop stats — free on Poker Grinder.</p>
+    <div class="stores">
+      <a href="https://apps.apple.com/app/id6773290275" id="store-ios">
+        <img src="{{ '/assets/images/App-Store.png' | relative_url }}" alt="Download on the App Store">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.pokergrinder.poker_grinder" id="store-android">
+        <img src="{{ '/assets/images/Google-Play-Button.png' | relative_url }}" alt="Get it on Google Play">
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var SUPABASE_URL = 'https://rdlrzdsafkcnhphdbibc.supabase.co';
+    var SUPABASE_KEY = 'sb_publishable_ujutq1N-IPHkx21nWl-Csg_6d3Nqh8x';
+
+    var el = document.getElementById('content');
+
+    // Handle comes from ?u=<handle> (the /p/<handle> 404 router redirects here).
+    var params = new URLSearchParams(window.location.search);
+    var handle = (params.get('u') || '').trim();
+
+    // Restore the clean /p/<handle> URL for sharing/back-button.
+    if (handle) {
+      try { history.replaceState({}, '', '/p/' + encodeURIComponent(handle)); } catch (e) {}
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+      });
+    }
+
+    function flagEmoji(cc) {
+      if (!cc || cc.length !== 2) return '';
+      return cc.toUpperCase().replace(/./g, function (c) {
+        return String.fromCodePoint(127397 + c.charCodeAt(0));
+      });
+    }
+
+    var COUNTRY_NAMES = {
+      AU: 'Australia', US: 'United States', GB: 'United Kingdom', NZ: 'New Zealand',
+      CA: 'Canada', IE: 'Ireland', DE: 'Germany', FR: 'France', ES: 'Spain',
+      IT: 'Italy', NL: 'Netherlands', BR: 'Brazil', MX: 'Mexico', AR: 'Argentina'
+    };
+
+    function initials(name) {
+      var parts = (name || '').trim().split(/\s+/).filter(Boolean);
+      if (parts.length === 0) return '?';
+      if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+      return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+    }
+
+    var AVATAR_COLORS = ['#5F2167', '#7A3B82', '#48306B', '#8A4B93', '#3D2A5E', '#6B2E74'];
+    function avatarColor(name) {
+      var h = 0;
+      for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+      return AVATAR_COLORS[h % AVATAR_COLORS.length];
+    }
+
+    // Org id like "apl-au" → "APL"; "kings-au" → "KINGS". Strips trailing -<cc>.
+    function orgAbbr(id) {
+      return String(id).replace(/-[a-z]{2}$/i, '').toUpperCase();
+    }
+
+    function showState(msg) {
+      el.innerHTML = '<div class="state-msg">' + msg + '</div>';
+    }
+
+    function render(p) {
+      var name = p.display_name || 'Poker player';
+      var flag = flagEmoji(p.country);
+      var countryName = COUNTRY_NAMES[(p.country || '').toUpperCase()] || p.country || '';
+      var sessions = (typeof p.session_count === 'number') ? p.session_count : 0;
+      var affs = Array.isArray(p.affiliations) ? p.affiliations : [];
+
+      var html = '';
+      html += '<div class="card-inner">';
+      html += '  <div class="avatar" style="background:' + avatarColor(name) + '">' + escapeHtml(initials(name)) + '</div>';
+      html += '  <h1 class="name">' + escapeHtml(name) + '</h1>';
+      if (flag || countryName) {
+        html += '  <p class="country">' + flag + (countryName ? '&nbsp;&nbsp;' + escapeHtml(countryName) : '') + '</p>';
+      }
+      html += '  <div class="divider"></div>';
+      html += '  <div class="stat"><div class="num">' + sessions + '</div><div class="label">Sessions recorded</div></div>';
+
+      if (affs.length) {
+        html += '  <div class="section-label">Affiliations</div>';
+        html += '  <div class="chips">';
+        affs.forEach(function (id) { html += '<span class="chip">' + escapeHtml(orgAbbr(id)) + '</span>'; });
+        html += '  </div>';
+      }
+
+      if (p.hendon_mob_url) {
+        html += '  <div class="section-label">Links</div>';
+        html += '  <a class="hendon" href="' + escapeHtml(p.hendon_mob_url) + '" target="_blank" rel="noopener noreferrer">';
+        html += '    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
+        html += '    View on Hendon Mob</a>';
+      }
+
+      html += '</div>';
+      el.innerHTML = html;
+
+      document.title = name + ' · Poker Grinder';
+    }
+
+    if (!handle) {
+      showState('No profile specified.');
+      return;
+    }
+
+    // Capability-based lookup: anyone with the (unguessable) handle can view.
+    // RPC returns one row by exact handle; the table itself isn't readable.
+    var url = SUPABASE_URL + '/rest/v1/rpc/get_public_profile';
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ p_handle: handle })
+    })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function (rows) {
+        if (!rows || rows.length === 0) {
+          showState('This profile doesn’t exist.<br>Grab the app to start your own.');
+          return;
+        }
+        render(rows[0]);
+      })
+      .catch(function () {
+        showState('Couldn’t load this profile right now.<br>Please try again later.');
+      });
+  })();
+</script>
