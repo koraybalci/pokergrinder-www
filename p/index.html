@@ -88,6 +88,23 @@ sitemap: false
       return d.toLocaleString('en-US', { month: 'long', year: 'numeric' });
     }
 
+    function n(val) { return (typeof val === 'number') ? val : 0; }
+
+    function ordinal(n) {
+      if (n === 1) return '1st';
+      if (n === 2) return '2nd';
+      if (n === 3) return '3rd';
+      return n + 'th';
+    }
+
+    function iconSvg(path) {
+      return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>';
+    }
+
+    function statChip(icon, label) {
+      return '<span class="stat-chip">' + iconSvg(icon) + escapeHtml(label) + '</span>';
+    }
+
     function showState(msg) {
       el.innerHTML = '<div class="state-msg">' + msg + '</div>';
     }
@@ -96,8 +113,16 @@ sitemap: false
       var name = p.display_name || 'Poker player';
       var flag = flagEmoji(p.country);
       var countryName = COUNTRY_NAMES[(p.country || '').toUpperCase()] || p.country || '';
-      var sessions = (typeof p.session_count === 'number') ? p.session_count : 0;
       var affs = Array.isArray(p.affiliations) ? p.affiliations : [];
+      var tCount = n(p.tournament_count);
+      var cCount = n(p.cash_count);
+      var wins = n(p.tournament_wins);
+      var itm = n(p.itm_count);
+      var finalTables = n(p.final_tables);
+      var bestRank = (typeof p.best_finish_rank === 'number') ? p.best_finish_rank : null;
+      var bestEntries = (typeof p.best_finish_entries === 'number') ? p.best_finish_entries : null;
+      var leagues = n(p.organisers_count);
+      var minutes = n(p.minutes_logged);
 
       var html = '';
       html += '<div class="card-inner">';
@@ -111,7 +136,30 @@ sitemap: false
         html += '  <p class="member-since">Member since ' + escapeHtml(since) + '</p>';
       }
       html += '  <div class="divider"></div>';
-      html += '  <div class="stat"><div class="num">' + sessions + '</div><div class="label">Sessions recorded</div></div>';
+
+      // Sessions breakdown
+      html += '  <p class="breakdown">Tournaments <strong>' + tCount + '</strong> &nbsp;·&nbsp; Cash <strong>' + cCount + '</strong></p>';
+
+      // Achievement chips
+      var chips = '';
+      if (wins > 0)
+        chips += statChip('<path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>', wins + (wins === 1 ? ' win' : ' wins'));
+      if (tCount > 0) {
+        var rate = tCount > 0 ? Math.round(itm / tCount * 100) : 0;
+        chips += statChip('<polyline points="20 6 9 17 4 12"/>', 'ITM ' + itm + ' (' + rate + '%)');
+      }
+      if (bestRank !== null) {
+        var bestLabel = ordinal(bestRank) + (bestEntries ? ' of ' + bestEntries : '');
+        chips += statChip('<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>', 'Best ' + bestLabel);
+      }
+      if (finalTables > 0)
+        chips += statChip('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', finalTables + ' final table' + (finalTables === 1 ? '' : 's'));
+      if (leagues > 0)
+        chips += statChip('<path d="M17.657 16.657L13.414 20.9a2 2 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><circle cx="12" cy="11" r="3"/>', leagues + ' league' + (leagues === 1 ? '' : 's'));
+      if (minutes > 0)
+        chips += statChip('<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', Math.floor(minutes / 60) + 'h logged');
+      if (chips)
+        html += '  <div class="stat-chips">' + chips + '</div>';
 
       if (affs.length) {
         html += '  <div class="section-label">Affiliations</div>';
