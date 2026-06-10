@@ -14,7 +14,10 @@
         if (path.indexOf('/p/') === 0 && path.length > 3) {
           var h = decodeURIComponent(path.slice(3).replace(/\/+$/, ''));
           if (h && h !== 'index.html') {
-            window.location.replace('/p/?u=' + encodeURIComponent(h));
+            // Preserve the query string (e.g. share UTM) so the profile page —
+            // and Google Analytics on it — sees the attribution.
+            var qs = window.location.search ? '&' + window.location.search.slice(1) : '';
+            window.location.replace('/p/?u=' + encodeURIComponent(h) + qs);
             return;
           }
         }
