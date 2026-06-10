@@ -16,10 +16,10 @@ sitemap: false
     <p class="cta-title">Track your own live poker game</p>
     <p class="cta-sub">Bankroll, sessions and preflop stats — free on Poker Grinder.</p>
     <div class="stores">
-      <a href="https://apps.apple.com/app/id6773290275" id="store-ios">
+      <a href="https://apps.apple.com/app/id6773290275?ct=share-profile" id="store-ios">
         <img src="{{ '/assets/images/App-Store.png' | relative_url }}" alt="Download on the App Store">
       </a>
-      <a href="https://play.google.com/store/apps/details?id=com.pokergrinder.poker_grinder" id="store-android">
+      <a href="https://play.google.com/store/apps/details?id=com.pokergrinder.poker_grinder&referrer=utm_source%3Dshare%26utm_medium%3Dprofile%26utm_campaign%3Dapp_share" id="store-android">
         <img src="{{ '/assets/images/Google-Play-Button.png' | relative_url }}" alt="Get it on Google Play">
       </a>
     </div>
@@ -41,6 +41,18 @@ sitemap: false
     if (handle) {
       try { history.replaceState({}, '', '/p/' + encodeURIComponent(handle)); } catch (e) {}
     }
+
+    // Surface the matching store on mobile (both shown on desktop). The store
+    // links carry share attribution (Play Install Referrer / App Store ct).
+    (function () {
+      var ua = navigator.userAgent || '';
+      var hide = /android/i.test(ua) ? 'store-ios'
+        : (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) ? 'store-android' : null;
+      if (hide) {
+        var node = document.getElementById(hide);
+        if (node) node.style.display = 'none';
+      }
+    })();
 
     function escapeHtml(s) {
       return String(s).replace(/[&<>"']/g, function (c) {
