@@ -1,5 +1,5 @@
 - title: Session Tracking
-  description: Log game type, buy-in, rebuys, expenses, venue, blinds and result for every cash game and tournament — every session in one place.
+  description: Start a session in seconds, then log buy-in, rebuys, add-ons, expenses, venue, blinds and result for every cash game and tournament — every session in one place.
   image: assets/images/service-icon2.png
   screenshot: assets/images/screen-sessions.png
 - title: Bankroll Report
@@ -7,19 +7,19 @@
   image: assets/images/service-icon3.png
   screenshot: assets/images/screen-bankroll-chart.png
   landscape: true
-- title: Hand Review
-  description: Record hands with hero cards, position, stack, street-by-street action and result — then review every hand across all your sessions in Study.
+- title: Hands & Seat Notes
+  description: Record hands with hero cards, position, stack, street-by-street action and result, keep notes on every seat at your table, then review every hand across all your sessions in Study.
   image: assets/images/service-icon5.png
-  screenshot: assets/images/screen-hand-recorder.png
+  screenshot: assets/images/screen-study.png
 - title: Poker Tools
   description: Pot odds & EV, ICM and chip-chop final-table deals, and hand-vs-hand equity — the math you need, right at the table.
   image: assets/images/service-icon4.png
   screenshot: assets/images/screen-tools.png
 - title: Live Preflop Stats
-  description: Track your VPiP, PFR and 3-Bet live as you play, and adjust on the fly to hit the ranges you're targeting.
+  description: One tap per hand tracks your VPiP, PFR and 3-Bet live as you play, so you can adjust on the fly to hit the ranges you're targeting.
   image: assets/images/service-icon6.png
-  screenshot: assets/images/screen-preflop.png
-- title: Variance & Luck Score
-  description: Log all-ins, flips, suckouts, bad beats and rivers to get a Luck Score and see how variance is really treating you.
+  screenshot: assets/images/screen-live.png
+- title: Stack vs Field
+  description: Log your stack at each break to see how it compares to the field average, and tag how each tournament ended — cooler, flip, blinded down or mistake — to see what you can control.
   image: assets/images/service-icon.png
-  screenshot: assets/images/screen-lucky-counter.png
+  screenshot: assets/images/screen-result.png
