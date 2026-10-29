@@ -102,6 +102,15 @@ sitemap: false
 
     function n(val) { return (typeof val === 'number') ? val : 0; }
 
+    // The link is set by the profile's owner, and escapeHtml doesn't stop a
+    // javascript: URL. Render it only if it's an https link on
+    // thehendonmob.com or a subdomain: the same rule as the app and the
+    // profiles_hendon_mob_url_check constraint in Supabase.
+    function hendonMobUrl(u) {
+      return (typeof u === 'string' &&
+        /^https:\/\/([a-z0-9-]+\.)*thehendonmob\.com([\/?#]|$)/i.test(u)) ? u : null;
+    }
+
     function ordinal(n) {
       if (n === 1) return '1st';
       if (n === 2) return '2nd';
@@ -192,9 +201,10 @@ sitemap: false
         html += '  </div>';
       }
 
-      if (p.hendon_mob_url) {
+      var hendon = hendonMobUrl(p.hendon_mob_url);
+      if (hendon) {
         html += '  <div class="section-label">Links</div>';
-        html += '  <a class="hendon" href="' + escapeHtml(p.hendon_mob_url) + '" target="_blank" rel="noopener noreferrer">';
+        html += '  <a class="hendon" href="' + escapeHtml(hendon) + '" target="_blank" rel="noopener noreferrer">';
         html += '    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
         html += '    View on Hendon Mob</a>';
       }
